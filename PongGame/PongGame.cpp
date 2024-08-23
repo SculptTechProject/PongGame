@@ -4,6 +4,11 @@
 
 using namespace std;
 
+Color Green = Color{ 38,185,154,255 };
+Color Dark_Green = Color{ 20,160,133,255 };
+Color Light_Green = Color{ 129,204,184,255 };
+Color Yellow = Color{ 243,213,91,255 };
+
 int player_score = 0;
 int cpu_score = 0;
 
@@ -14,7 +19,7 @@ public:
 	int radius;
 
 	void Draw() {
-		DrawCircle(x, y, radius, WHITE);
+		DrawCircle(x, y, radius, Yellow);
 	}
 
 	void Update() {
@@ -103,9 +108,9 @@ int main() {
 	const int screen_height = 800;
 
 	InitWindow(screen_width, screen_height, "Pong Game!");
-	SetTargetFPS(60);
+	SetTargetFPS(144);
 
-	int speedB = 8; //Speed of ball
+	int speedB = 4; //Speed of ball
 
 	//ball
 	ball.radius = 20;
@@ -114,7 +119,7 @@ int main() {
 	ball.speed_x = speedB;
 	ball.speed_y = speedB;
 
-	int speedP = 6;  //Speed of player and cpu
+	int speedP = 3;  //Speed of player and cpu
 
 	//player
 	player.width = 25;
@@ -122,7 +127,7 @@ int main() {
 	player.x = screen_width - player.width - 10;
 	player.y = screen_height / 2 - player.height / 2;
 	player.speed = speedP;
-	player.color = YELLOW;
+	player.color = WHITE;
 
 	//cpu
 	cpu.height = 120;
@@ -149,7 +154,9 @@ int main() {
 		}
 
 		// drawing
-		ClearBackground(BLACK);
+		ClearBackground(Dark_Green);
+		DrawRectangle(screen_width / 2, 0, screen_width / 2, screen_height, Green);
+		DrawCircle(screen_width / 2, screen_height / 2, 150, Light_Green);
 		DrawLine(screen_width / 2, 0, screen_width / 2, screen_height, WHITE);
 		ball.Draw();
 		cpu.Draw();
